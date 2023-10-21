@@ -119,11 +119,11 @@ body  {
       <div class="loginprompt">
         <br>
         <label for="uname" class="user"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" id="usernameentered" name="uname" required>
       </br>
       <br>
         <label for="psword" class="pass"><b>Password</b></label>
-        <input class="passbox" type="password" placeholder="Enter Password" name="psw" required>
+        <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required>
     </br>
         <br>
         <button type="submit" class="sub" onclick="">Login</button>
@@ -192,6 +192,8 @@ AllUsers();
     function GameEnd(currentScore){
 
     }
+    console.log(document.getElementById("passwordentered").value)
+    console.log(document.getElementById("usernameentered").value)
     function loginToAccount(username, password){
 
     }
