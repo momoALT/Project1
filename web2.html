@@ -172,6 +172,7 @@ let UserAmount =
   
   
   let currentNum = 0;
+  let flexibleNum = 0;
   
   function AllUsers(cnum){
   if (currentNum >= 0 && currentNum < DataSet1.length) {
@@ -187,24 +188,29 @@ let UserAmount =
 //AllUsers();
 
 function SpecificUser(cnum, user){
-  if (currentNum >= 0 && currentNum < DataSet1.length) {
-    if(DataSet1[currentNum].username != user){
+  if (currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != user) {
+    
     console.log(DataSet1[currentNum].username)
     currentNum++;
     SpecificUser(cnum, user);
     
-  }else if (DataSet1[currentNum].username === user){
-    console.log("user found")
   }else if (currentNum === DataSet1.length){
     console.log("No more Users")
+    currentNum = 0;
+  }else if (DataSet1[currentNum].username === user){
+    console.log("user found")
+    flexibleNum = currentNum;
+    currentNum = 0;
   }
 }
-}
+
 
 
 SpecificUser(currentNum, "user3");
+console.log(currentNum === DataSet1.length)
 console.log(currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != "user3")
 console.log(currentNum)
+console.log(flexibleNum)
 
 
     function GameStart(playerUsername){
