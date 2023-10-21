@@ -150,11 +150,10 @@ body  {
   </div>  
   <div class="leaderboardbox">
     <h2 class="rankingtext">Live Ranking</h2>
-    <p class="leaderboard">
+    <p class="leaderboard" id="leaderboardID">
       #1
       #2
-      #3
-    </p>
+      #3</p>
     </div>  
   
     <script>
@@ -220,7 +219,7 @@ function SpecificUser(cnum, user, pass){
   }
 }
 
-
+document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5";
 
 function PasswordCompare(userIndex, pass){
   if (DataSet1[userIndex].password === pass) {
