@@ -183,7 +183,23 @@ let UserAmount =
     return 0;
   }
 }
+
 AllUsers();
+
+function SpecificUser(cnum, user){
+  if (currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != user) {
+    console.log(DataSet1[currentNum].username)
+    currentNum++;
+    SpecificUser();
+  }else if (currentNum === DataSet1.length){
+    console.log("No more Users")
+    return 0;
+  }else {
+    console.log("user found")
+  }
+
+}
+SpecificUser(currentNum, "user3");
 
 
     function GameStart(playerUsername){
@@ -194,8 +210,12 @@ AllUsers();
     }
     console.log(document.getElementById("passwordentered").value)
     console.log(document.getElementById("usernameentered").value)
-    function loginToAccount(username, password){
 
+
+    function loginToAccount(username, password){
+      if (document.getElementById("usernameentered").value === AllUsers() && document.getElementById("passwordentered").value) {
+        
+      }
     }
     function createAccount(username, password){
       
