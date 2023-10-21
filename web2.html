@@ -99,6 +99,13 @@ body  {
   position: relative;
   left: 4px;
 }
+.leaderboard{
+  color: aliceblue;
+  position: relative;
+  right: 120px;
+  top: 50px;
+  white-space: pre-line;
+}
     </style>
   </head>
 
@@ -143,7 +150,11 @@ body  {
   </div>  
   <div class="leaderboardbox">
     <h2 class="rankingtext">Live Ranking</h2>
-    
+    <p class="leaderboard">
+      #1
+      #2
+      #3
+    </p>
     </div>  
   
     <script>
@@ -170,10 +181,14 @@ let UserAmount =
   console.log(true == 0);
   console.log(DataSet1.length);
   
+ 
+
   
+  console.log(DataSet1.sort(function(a, b){return b.score-a.score}))
   let currentNum = 0;
   let flexibleNum = 0;
-  
+  let mainUser = undefined;
+
   function AllUsers(cnum){
   if (currentNum >= 0 && currentNum < DataSet1.length) {
     console.log(DataSet1[currentNum].username)
@@ -187,26 +202,37 @@ let UserAmount =
 
 //AllUsers();
 
-function SpecificUser(cnum, user){
+function SpecificUser(cnum, user, pass){
   if (currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != user) {
     
     console.log(DataSet1[currentNum].username)
     currentNum++;
-    SpecificUser(cnum, user);
+    SpecificUser(cnum, user, pass);
     
   }else if (currentNum === DataSet1.length){
-    console.log("No more Users")
+    console.log("No users found")
     currentNum = 0;
   }else if (DataSet1[currentNum].username === user){
     console.log("user found")
     flexibleNum = currentNum;
     currentNum = 0;
+    PasswordCompare(flexibleNum, pass)
   }
 }
 
 
 
-SpecificUser(currentNum, "user3");
+function PasswordCompare(userIndex, pass){
+  if (DataSet1[userIndex].password === pass) {
+    console.log("correct pass... logging in")
+  }else if (DataSet1[userIndex].password != pass){
+    console.log("wrong pass... try again.")
+  }
+}
+
+
+SpecificUser(currentNum, "user2", "password1234");
+console.log(DataSet1[1].password === "password1234")
 console.log(currentNum === DataSet1.length)
 console.log(currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != "user3")
 console.log(currentNum)
