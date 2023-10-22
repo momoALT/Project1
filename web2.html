@@ -51,7 +51,7 @@
 
 body  {
   background-image: url("paper.gif");
-  background-color: #a4d2ff;
+  background-color: #222629;
 }
 .loginprompt{
   position: relative;
@@ -151,7 +151,8 @@ body  {
         <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required>
     </br>
         <br>
-        <button type="submit" class="sub" onclick="SpecificUser(currentNum, document.getElementById('usernameentered').value, document.getElementById('passwordentered').value);">Login</button>
+        <button type="submit" id="logorsigID" class="sub" onclick="SpecificUser(currentNum, document.getElementById('usernameentered').value, document.getElementById('passwordentered').value);"
+        >Login</button>
       </br>
       <p id="tryagaintext" class="tryagainclass"></p>
       <p id="loginorsignupID" class="loginorsignupclass">Login:</p>
@@ -176,7 +177,9 @@ body  {
     </div>  
   
     <script>
-      
+      const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length;
+      const DataSetMain = JSON.parse(localStorage.getItem('DataSet'));
+
       const DataSet1 = [
         {
           username: "user1",
@@ -197,41 +200,41 @@ body  {
 let UserAmount = 
   console.log()
   console.log(true == 0);
-  console.log(DataSet1.length);
+  console.log(DataSetLength);
   
  
 
   
-  console.log(DataSet1.sort(function(a, b){return b.score-a.score}))
+  console.log(DataSetMain.sort(function(a, b){return b.score-a.score}))
   let currentNum = 0;
   let flexibleNum = 0;
   let mainUser = "";
 
   function AllUsers(cnum){
-  if (currentNum >= 0 && currentNum < DataSet1.length) {
-    console.log(DataSet1[currentNum].username)
+  if (currentNum >= 0 && currentNum < DataSetLength) {
+    console.log(DataSetMain[currentNum].username)
     currentNum++;
     AllUsers();
   }else{
-    console.log("No more Users")
-    return 0;
+    console.log("user not exist")
+    return "user does not exist";
   }
 }
 
 //AllUsers();
 
 function SpecificUser(cnum, user, pass){
-  if (currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != user) {
+  if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
     
-    console.log(DataSet1[currentNum].username)
+    console.log(DataSetMain[currentNum].username)
     currentNum++;
     SpecificUser(cnum, user, pass);
     
-  }else if (currentNum === DataSet1.length){
+  }else if (currentNum === DataSetLength){
     console.log("No users found")
     currentNum = 0;
     document.getElementById('tryagaintext').innerHTML = 'Wrong username or password, Try again.';
-  }else if (DataSet1[currentNum].username === user){
+  }else if (DataSetMain[currentNum].username === user){
     console.log("user found")
     flexibleNum = currentNum;
     currentNum = 0;
@@ -239,14 +242,40 @@ function SpecificUser(cnum, user, pass){
   }
 }
 
+function UserChecker(cnum, user, pass){
+  if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
+    
+    console.log(DataSetMain[currentNum].username)
+    currentNum++;
+    UserChecker(cnum, user, pass);
+    
+  }else if (currentNum === DataSetLength){
+    console.log("user does not exist.")
+    currentNum = 0;
+    
+
+  }else if (DataSetMain[currentNum].username === user){
+    console.log("user exists, try again")
+    currentNum = 0;
+    return "exists";
+  }
+}
+
+
+const DatasetStringified = JSON.stringify(DataSet1)
+
+localStorage.setItem('DataSet',DatasetStringified)
+
+
+console.log(JSON.parse(localStorage.getItem('DataSet')))
 document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5";
 
 
 function PasswordCompare(userIndex, pass){
-  if (DataSet1[userIndex].password === pass) {
+  if (DataSetMain[userIndex].password === pass && document.getElementById("logorsigID").innerHTML === "Login") {
     console.log("correct pass... logging in")
-    mainUser = DataSet1[userIndex].username;
-  }else if (DataSet1[userIndex].password != pass){
+    mainUser = DataSetMain[userIndex].username;
+  }else if (DataSetMain[userIndex].password != pass){
     console.log("wrong pass... try again.")
     document.getElementById('tryagaintext').innerHTML = 'Wrong username or password, Try again.';
   }
@@ -254,9 +283,9 @@ function PasswordCompare(userIndex, pass){
 
 
 
-console.log(DataSet1[1].password === "password1234")
-console.log(currentNum === DataSet1.length)
-console.log(currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != "user3")
+console.log(DataSetMain[1].password === "password1234")
+console.log(currentNum === DataSetLength)
+console.log(currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != "user3")
 console.log(currentNum)
 console.log(flexibleNum)
 
@@ -276,8 +305,11 @@ console.log(flexibleNum)
         
       }
     }
-    function createAccount(username, password){
-      
+    function createAccount(username, password, retype){
+      if (password === retype) {
+        console.log("creating account.")
+        
+      }
     }
     let txt = document.getElementById("gametitle");
             txt.style.textAlign = "center";
