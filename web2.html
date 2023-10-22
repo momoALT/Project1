@@ -4,25 +4,13 @@
   <head>
     <title>Game Website</title>
     <style>
-      .button1 {
-        background-color: rebeccapurple;
-        color: white;
-        border: none;
-
-      }
+      
       #box {
     width: 1px;
     margin: 100px auto;
     background: rgb(0, 0, 0);
 }
-.button1 {
-    
-  height: 20px;
-  width: 50px;
-  margin-left: 20px;
-  margin-top: 220px;
-  
-}
+
 .notloggedtext{
   color: red;
   position: relative;
@@ -50,7 +38,7 @@
 }
 
 body  {
-  background-image: url("paper.gif");
+  
   background-color: #222629;
 }
 .loginprompt{
@@ -177,8 +165,7 @@ body  {
     </div>  
   
     <script>
-      const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length;
-      const DataSetMain = JSON.parse(localStorage.getItem('DataSet'));
+      
 
       const DataSet1 = [
         {
@@ -197,6 +184,12 @@ body  {
           score: 300
         },
       ]
+      const DatasetStringified = JSON.stringify(DataSet1);
+      localStorage.setItem('DataSet',DatasetStringified);
+      const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length;
+      const DataSetMain = JSON.parse(localStorage.getItem('DataSet'));
+
+      
 let UserAmount = 
   console.log()
   console.log(true == 0);
@@ -262,9 +255,7 @@ function UserChecker(cnum, user, pass){
 }
 
 
-const DatasetStringified = JSON.stringify(DataSet1)
 
-localStorage.setItem('DataSet',DatasetStringified)
 
 
 console.log(JSON.parse(localStorage.getItem('DataSet')))
@@ -311,8 +302,7 @@ console.log(flexibleNum)
         
       }
     }
-    let txt = document.getElementById("gametitle");
-            txt.style.textAlign = "center";
+    
     function saveUser(username, password, id){
       localStorage.setItem('user', username)
     }
