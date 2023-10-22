@@ -106,6 +106,24 @@ body  {
   top: 50px;
   white-space: pre-line;
 }
+.tryagainclass {
+  color: red;
+  position: absolute;
+  top: 75px;
+  left: 35px;
+  font-size: small;
+  
+}
+.loginorsignupclass{
+  color: white;
+  position: absolute;
+  
+  left: 130px;
+  bottom: 380px;
+  font-size: large;
+  font: bold;
+  
+}
     </style>
   </head>
 
@@ -126,16 +144,17 @@ body  {
       <div class="loginprompt">
         <br>
         <label for="uname" class="user"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" id="usernameentered" name="uname" required>
+        <input type="text" placeholder="Enter Username" id="usernameentered"  class="userbox" name="uname" required>
       </br>
       <br>
         <label for="psword" class="pass"><b>Password</b></label>
         <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required>
     </br>
         <br>
-        <button type="submit" class="sub" onclick="">Login</button>
+        <button type="submit" class="sub" onclick="SpecificUser(currentNum, document.getElementById('usernameentered').value, document.getElementById('passwordentered').value);">Login</button>
       </br>
-
+      <p id="tryagaintext" class="tryagainclass"></p>
+      <p id="loginorsignupID" class="loginorsignupclass">Login:</p>
       <br>
       <h2 class="createaccounttext" id="createacctxt">To create an account:</h2>
     </br>
@@ -186,7 +205,7 @@ let UserAmount =
   console.log(DataSet1.sort(function(a, b){return b.score-a.score}))
   let currentNum = 0;
   let flexibleNum = 0;
-  let mainUser = undefined;
+  let mainUser = "";
 
   function AllUsers(cnum){
   if (currentNum >= 0 && currentNum < DataSet1.length) {
@@ -211,6 +230,7 @@ function SpecificUser(cnum, user, pass){
   }else if (currentNum === DataSet1.length){
     console.log("No users found")
     currentNum = 0;
+    document.getElementById('tryagaintext').innerHTML = 'Wrong username or password, Try again.';
   }else if (DataSet1[currentNum].username === user){
     console.log("user found")
     flexibleNum = currentNum;
@@ -221,16 +241,19 @@ function SpecificUser(cnum, user, pass){
 
 document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5";
 
+
 function PasswordCompare(userIndex, pass){
   if (DataSet1[userIndex].password === pass) {
     console.log("correct pass... logging in")
+    mainUser = DataSet1[userIndex].username;
   }else if (DataSet1[userIndex].password != pass){
     console.log("wrong pass... try again.")
+    document.getElementById('tryagaintext').innerHTML = 'Wrong username or password, Try again.';
   }
 }
 
 
-SpecificUser(currentNum, "user2", "password1234");
+
 console.log(DataSet1[1].password === "password1234")
 console.log(currentNum === DataSet1.length)
 console.log(currentNum >= 0 && currentNum < DataSet1.length && DataSet1[currentNum].username != "user3")
