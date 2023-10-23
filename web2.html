@@ -89,8 +89,8 @@ body  {
 }
 .leaderboard{
   color: aliceblue;
-  position: relative;
-  right: 120px;
+  position: absolute;
+  left: 20px;
   top: 50px;
   white-space: pre-line;
 }
@@ -111,6 +111,20 @@ body  {
   font-size: large;
   font: bold;
   
+}
+.leadername{
+  color: aliceblue;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  white-space: pre-line;
+}
+.leaderscore{
+  color: red;
+  position: absolute;
+  left: 180px;
+  top: 50px;
+  white-space: pre-line;
 }
     </style>
   </head>
@@ -162,6 +176,8 @@ body  {
       #1
       #2
       #3</p>
+      <p class="leadername" id="leadernameID"></p>
+      <p class="leaderscore" id="leaderscoreID"></p>
     </div>  
   
     <script>
@@ -208,13 +224,44 @@ DataFormat.score = 0;
 
 NewUser.push(DataFormat);
 
-// var stored = JSON.parse(localStorage.getItem("DataSet"));
+// var stored = DataSetMain;
 // stored.push(DataFormat);
 
 // localStorage.setItem('DataSet', JSON.stringify(stored));
 // console.log(DataSetMain)
 
+function addUser(username, password){
+  var stored = DataSetMain;
+  DataFormat.username = username;
+  DataFormat.password = password;
+  DataFormat.score = 0; 
+  stored.push(DataFormat);
+  localStorage.setItem('DataSet', JSON.stringify(stored));
+  console.log(DataSetMain)
+}
+//addUser("mysterylights", "loltrey");
+let removeUserNumber = 0;
+function removeUser(username){
+  if (removeUserNumber >= 0 && removeUserNumber < DataSetLength && DataSetMain[removeUserNumber].username != username) {
+    
+    console.log(DataSetMain[removeUserNumber].username)
+    removeUserNumber++;
+    removeUser(username);
+    
+  }else if (removeUserNumber === DataSetLength){
+    console.log("user doesnt exist")
+    removeUserNumber = 0;
+    
+  }else if (DataSetMain[removeUserNumber].username === user){
 
+    console.log("user found...removing")
+    var NewData = undefined;
+    NewData = DataSetMain.splice(removeUserNumber, 1);
+    removeUserNumber = 0;
+    localStorage.setItem('DataSet', JSON.stringify(NewData));
+    console.log(DataSetMain);
+  }
+}
 
   console.log()
   console.log(true == 0);
@@ -284,9 +331,22 @@ function UserChecker(cnum, user, pass){
 
 
 console.log(JSON.parse(localStorage.getItem('DataSet')))
-document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5";
+document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5" + "\n#6" + "\n#7" + "\n#8" + "\n#9" + "\n#10";
 
-
+let LeaderIndex = 0;
+let hasSetLeader = 0;
+function SetLeaderboard(){
+  if (hasSetLeader === 0 && LeaderIndex >= 0 && LeaderIndex < DataSetLength){
+    const UserNumber = DataSetMain[LeaderIndex].username;
+    const UserScore = DataSetMain[LeaderIndex].score;
+    console.log(DataSetMain[LeaderIndex].username)
+    document.getElementById("leadernameID").innerHTML = document.getElementById("leadernameID").innerHTML + `\n${UserNumber}`
+    document.getElementById("leaderscoreID").innerHTML = document.getElementById("leaderscoreID").innerHTML + `\n${UserScore}`
+    LeaderIndex++;
+    SetLeaderboard();
+  }
+}
+SetLeaderboard();
 function PasswordCompare(userIndex, pass){
   if (DataSetMain[userIndex].password === pass && document.getElementById("logorsigID").innerHTML === "Login") {
     console.log("correct pass... logging in")
