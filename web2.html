@@ -167,7 +167,9 @@ body  {
     <script>
       
 
-      const DataSet1 = [
+      let DataSet1 = JSON.parse(localStorage.getItem('DataSet'))
+      if (!DataSet1){
+        [
         {
           username: "user1",
           password: "password123",
@@ -184,6 +186,7 @@ body  {
           score: 300
         },
       ]
+      }
       const DatasetStringified = JSON.stringify(DataSet1);
       localStorage.setItem('DataSet',DatasetStringified);
       const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length;
