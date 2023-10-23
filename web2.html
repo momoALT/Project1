@@ -167,24 +167,26 @@ body  {
     <script>
       
 
-      let DataSet1 = JSON.parse(localStorage.getItem('DataSet'))
-      if (!DataSet1){
-        [
+      let DataSet1 = JSON.parse(localStorage.getItem('DataSet'));
+      
+      if (DataSet1 === null){
+        DataSet1 = [
         {
-          username: "user1",
+          username: "BeastPro10",
           password: "password123",
           score: 2500
         },
         {
-          username: "user2",
+          username: "JohnDoe",
           password: "password1234",
           score: 2750
         },
         {
-          username: "user3",
+          username: "MightyMax680",
           password: "password3",
           score: 300
         },
+        
       ]
       }
       const DatasetStringified = JSON.stringify(DataSet1);
@@ -192,8 +194,28 @@ body  {
       const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length;
       const DataSetMain = JSON.parse(localStorage.getItem('DataSet'));
 
-      
-let UserAmount = 
+let DataFormat = {
+  username: undefined,
+  password: undefined,
+  score: undefined
+}
+
+var NewUser = [];
+
+DataFormat.username = "tester";
+DataFormat.password = "password12";
+DataFormat.score = 0; 
+
+NewUser.push(DataFormat);
+
+// var stored = JSON.parse(localStorage.getItem("DataSet"));
+// stored.push(DataFormat);
+
+// localStorage.setItem('DataSet', JSON.stringify(stored));
+// console.log(DataSetMain)
+
+
+
   console.log()
   console.log(true == 0);
   console.log(DataSetLength);
