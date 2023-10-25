@@ -33,6 +33,7 @@ let DataFormat = {
   score: undefined
 }
 
+let loggedUser = undefined;
 var NewUser = [];
 
 DataFormat.username = "tester";
@@ -48,6 +49,7 @@ NewUser.push(DataFormat);
 // console.log(DataSetMain)
 
 function addUser(username, password){
+
   var stored = DataSetMain;
   DataFormat.username = username;
   DataFormat.password = password;
@@ -57,6 +59,27 @@ function addUser(username, password){
   console.log(DataSetMain)
 }
 //addUser("mysterylights", "loltrey");
+
+function createUser(username, password, retype){
+if (userFind(username) === false && password === retype) {
+  console.log("creating account..")
+  var stored = DataSetMain;
+  DataFormat.username = username;
+  DataFormat.password = password;
+  DataFormat.score = 0; 
+  stored.push(DataFormat);
+  localStorage.setItem('DataSet', JSON.stringify(stored));
+  console.log(DataSetMain);
+  loggedUser = username;
+  window.location.href = "loggedinpage.html";
+}else if (userFind(username) === true) {
+  console.log("user already exists! choose different name");
+}else if (password != retype){
+  console.log("wrong password enter again!");
+}
+  
+}
+
 let removeUserNumber = 0;
 function removeUser(username){
   if (removeUserNumber >= 0 && removeUserNumber < DataSetLength && DataSetMain[removeUserNumber].username != username) {
@@ -143,7 +166,24 @@ function UserChecker(cnum, user, pass){
   }
 }
 
+function userFind(user){
+  if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
+    
+    console.log(DataSetMain[currentNum].username)
+    currentNum++;
+    userFind(user);
+    
+  }else if (currentNum === DataSetLength){
+    console.log("user does not exist.")
+    currentNum = 0;
+    return false
 
+  }else if (DataSetMain[currentNum].username === user){
+    console.log("user exists")
+    currentNum = 0;
+    return true;
+  }
+}
 
 
 
@@ -176,8 +216,8 @@ function PasswordCompare(userIndex, pass){
 
 
 
-console.log(DataSetMain[1].password === "password1234")
-console.log(currentNum === DataSetLength)
+//console.log(DataSetMain[1].password === "password1234")
+//console.log(currentNum === DataSetLength)
 console.log(currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != "user3")
 console.log(currentNum)
 console.log(flexibleNum)
@@ -189,8 +229,8 @@ console.log(flexibleNum)
     function GameEnd(currentScore){
 
     }
-    console.log(document.getElementById("passwordentered").value)
-    console.log(document.getElementById("usernameentered").value)
+    //console.log(document.getElementById("passwordentered").value)
+    //console.log(document.getElementById("usernameentered").value)
 
 
     function loginToAccount(username, password){

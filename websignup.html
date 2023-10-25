@@ -37,7 +37,10 @@
     </br>
 
         <br>
-        <button type="submit" id="signupID" class="signupsubmit" onclick="createAccount(currentNum, document.getElementById('newusernameentered').value, document.getElementById('passwordretypeentered').value);"
+        <button  id="signupID" class="signupsubmit" onclick="
+        createAccount(document.getElementById('newusernameentered').value, document.getElementById('passwordentered').value, document.getElementById('passwordretypeentered').value);
+        
+        "
         >Sign-Up</button>
       </br>
       <p id="tryagaintext" class="tryagainclass"></p>
@@ -45,7 +48,7 @@
       <br>
       <h2 class="backtologin" id="backtologinID">To go back to the login page:</h2>
     </br>
-    <button class="clickherebutton" onclick="window.location = 'web2.html'">Click Here</button>
+    <button class="clickherebutton" onclick="window.location.href = 'web2.html'">Click Here</button>
       </div>
 
       
