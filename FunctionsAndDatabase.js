@@ -176,7 +176,7 @@ function userFind(user){
   }else if (currentNum === DataSetLength){
     console.log("user does not exist.")
     currentNum = 0;
-    return false
+    return false;
 
   }else if (DataSetMain[currentNum].username === user){
     console.log("user exists")
