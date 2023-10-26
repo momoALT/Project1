@@ -1,0 +1,174 @@
+#box {
+  overflow: hidden;
+    width: 1px;
+    margin: 100px auto;
+    background: rgb(0, 0, 0);
+}
+body { 
+  width: 100%; 
+  height: 100%; 
+} 
+.notloggedtext{
+  color: red;
+  position: relative;
+  left: 140px;
+}
+.signuptext{
+  color: white;
+  position: absolute;
+  left: 210px;
+}
+.loggedtext{
+  color: green;
+  position: absolute;
+  left: 140px;
+}
+.box {
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  width: 500px;
+  height: 400px;
+  margin-left: 600px;
+  margin-top: 120px;
+  background-color: rgb(0, 0, 0);
+  transform: translate(50%, 50%);
+}
+.leaderboardbox {
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  width: 350px;
+  height: 400px;
+  margin-left: 1200px;
+  margin-top: 120px;
+  background-color: rgb(0, 0, 0);
+  transform: translate(50%, 50%);
+}
+
+body  {
+  
+  background-color: #222629;
+}
+.loginprompt{
+  position: relative;
+  top: 150px;
+  right: 130px;
+}
+.loggedin{
+  position: relative;
+  top: 120px;
+  left: 20px;
+}
+.signupdiv{
+  position: relative;
+  top: 120px;
+  left: 110px;
+}
+.signupsubmit{
+  position: absolute;
+  left: 110px;
+}
+.user{
+  color: white;
+  position: relative;
+  
+}
+.pass{
+  color: white;
+  position: relative;
+}
+.pass2{
+    color: white;
+    position: relative;
+    right: 63px;
+  }
+  .passboxretype{
+    position: relative;
+  right: 60px;
+  }
+.sub{
+  position: relative;
+  left: 120px;
+  top: 10px;
+}
+.createaccounttext{
+  color: white;
+  position: relative;
+  left: 40px;
+  top: 20px;
+}
+.backtologin{
+  color: white;
+  position: relative;
+  left: 5px;
+  top: 20px;
+}
+.clickherebutton{
+  color: rgb(0, 0, 255);
+  font-size: large;
+  position: relative;
+  left: 95px;
+  bottom: 20px;
+}
+.logout{
+  color: rgb(252, 0, 0);
+  font-size: large;
+  position: absolute;
+  left: 190px;
+  bottom: 150px;
+}
+.gamelogo{
+  position: absolute;
+  
+  transform: translate(130%, 20%);
+}
+.rankingtext{
+  color: red;
+  position: relative;
+  left: 100px
+}
+.passbox{
+  position: relative;
+  left: 4px;
+}
+
+.leaderboard{
+  color: aliceblue;
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  white-space: pre-line;
+}
+.tryagainclass {
+  color: red;
+  position: absolute;
+  top: 75px;
+  left: 35px;
+  font-size: small;
+  
+}
+.loginorsignupclass{
+  color: white;
+  position: absolute;
+  
+  left: 130px;
+  bottom: 380px;
+  font-size: large;
+  font: bold;
+  
+}
+.leadername{
+  color: aliceblue;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  white-space: pre-line;
+}
+.leaderscore{
+  color: red;
+  position: absolute;
+  left: 180px;
+  top: 50px;
+  white-space: pre-line;
+}
