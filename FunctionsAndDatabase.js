@@ -200,7 +200,8 @@ return true;
 
 
 console.log(JSON.parse(localStorage.getItem('DataSet')))
-document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5" + "\n#6" + "\n#7" + "\n#8" + "\n#9" + "\n#10";
+
+
 
 let LeaderIndex = 0;
 let hasSetLeader = 0;
@@ -215,7 +216,12 @@ LeaderIndex++;
 SetLeaderboard();
 }
 }
-SetLeaderboard();
+if (window.location.pathname != '/game.html') {
+
+  document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5" + "\n#6" + "\n#7" + "\n#8" + "\n#9" + "\n#10";  
+  SetLeaderboard();
+}
+
 
 
 function PasswordCompare(userIndex, pass, user){
@@ -276,4 +282,10 @@ localStorage.setItem('user', username)
 }
 
 console.log(currentUser);
-document.getElementById('loggedtext').innerHTML = "Welcome, " + localStorage.getItem('user');
+if (window.location.pathname == '/loggedinpage.html' ) {
+  document.getElementById('loggedtext').innerHTML = "Welcome, " + localStorage.getItem('user');
+}
+
+
+
+
