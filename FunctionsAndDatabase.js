@@ -155,12 +155,12 @@ function UserChecker(cnum, user, pass){
     UserChecker(cnum, user, pass);
     
   }else if (currentNum === DataSetLength){
-    console.log("user does not exist.")
+    console.log("user doesi not exist.")
     currentNum = 0;
     
 
   }else if (DataSetMain[currentNum].username === user){
-    console.log("user exists, try again")
+    console.log("user existsi, try again")
     currentNum = 0;
     return "exists";
   }
@@ -185,7 +185,7 @@ function userFind(user){
   }
 }
 
-
+console.log("skibidi")
 
 console.log(JSON.parse(localStorage.getItem('DataSet')))
 document.getElementById("leaderboardID").innerHTML = document.getElementById("leaderboardID").innerHTML + "\n#4" + "\n#5" + "\n#6" + "\n#7" + "\n#8" + "\n#9" + "\n#10";
