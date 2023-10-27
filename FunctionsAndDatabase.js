@@ -277,3 +277,4 @@ console.log(flexibleNum)
     
     console.log(currentUser);
     document.getElementById('loggedtext').innerHTML = "Welcome, " + localStorage.getItem('user');
+    //newchange
