@@ -1,4 +1,11 @@
 canvas {
-    border: 1px solid #d3d3d3;
-    background-color: #df5d5d;
+    border: 1px solid #5e5e5e;
+    background-color: #000000;
+  }
+  body  {
+  
+    background-color: #000000;
+  }
+  #thevoice{
+    display: none;
   }
