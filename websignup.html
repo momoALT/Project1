@@ -36,6 +36,18 @@
     <input class="passboxretype" type="password" placeholder="Re-enter Password" id="passwordretypeentered" name="pswrt" required>
     </br>
 
+    <br>
+    
+    <label for="eml" class="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" id="emailentered"  class="emailbox" name="emailname" required>
+   
+  </br>
+
+  <br>
+  <label for="number" class="phone"><b>Phone number</b></label>
+  <input type="text" placeholder="Enter Phone Number" id="phoneentered"  class="phonebox" name="pnum" required>
+</br>
+
         <br>
         <button  id="signupID" class="signupsubmit" onclick="
         createUser(document.getElementById('newusernameentered').value, document.getElementById('passwordentered').value, document.getElementById('passwordretypeentered').value);
@@ -48,6 +60,7 @@
       <br>
       <h2 class="backtologin" id="backtologinID">To go back to the login page:</h2>
     </br>
+    
     <button class="clickherebutton" onclick="window.location.href = 'index.html'">Click Here</button>
       </div>
 

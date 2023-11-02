@@ -46,7 +46,8 @@
 
 body  {
   
-  background-color: #222629;
+  background-image: url("gamebg2.gif");
+  background-size: cover;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -62,8 +63,9 @@ body  {
 }
 .signupdiv{
   position: relative;
-  top: 120px;
-  left: 110px;
+  top: 105px;
+  left: 105px;
+  
 }
 .signupsubmit{
   position: absolute;
@@ -92,14 +94,33 @@ body  {
   position: relative;
 }
 .pass2{
-    color: white;
-    position: relative;
-    right: 63px;
+  color: white;
+  position: relative;
+  right: 63px;
   }
   .passboxretype{
     position: relative;
   right: 60px;
   }
+.email{
+    color: white;
+    position: absolute;
+    right: 235px;
+  }
+.emailbox{
+  position: absolute;
+  left: 73px;
+}
+.phone{
+  position: absolute;
+  color: white;
+  left: -30px;
+}
+.phonebox{
+  position: absolute;
+  left: 73px;
+}
+
   
 .sub{
   position: absolute;
@@ -141,9 +162,9 @@ body  {
 }
 .backtologin{
   color: white;
-  position: relative;
+  position: absolute;
   left: 5px;
-  top: 20px;
+  top: 220px;
 }
 .clickherebutton{
   color: rgb(96, 96, 255);
@@ -153,7 +174,7 @@ body  {
   font-size: large;
   position: relative;
   left: 95px;
-  bottom: 20px;
+  top: 0px;
 }
 .logout{
   color: rgb(255, 255, 255);
