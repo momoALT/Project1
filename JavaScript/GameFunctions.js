@@ -1,7 +1,7 @@
 //----------------- GAME FUNCTIONS -------------------
 var TheVoiceImage = new Image();
 var gameCanvas;
-TheVoiceImage.src = 'thevoiceface.png'
+TheVoiceImage.src = '../Assets/Images/thevoiceface.png'
 function startGame() {
   
     myGameArea.start();
@@ -11,12 +11,12 @@ function startGame() {
     canvas : document.createElement("canvas"),
     start : function() {
       var centerimg = window.innerWidth / 2;
-      TheVoiceImage = new component(300, 300, "thevoiceface.png", centerimg, 120, "image");
+      TheVoiceImage = new component(300, 300, "../Assets/Images/thevoiceface.png", centerimg, 120, "image");
       
       gameCanvas = this.canvas
       
-        gameCanvas.width = window. innerWidth;
-        gameCanvas.height = window. innerHeight;
+        gameCanvas.width = window.innerWidth;
+        gameCanvas.height = window.innerHeight;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -62,7 +62,7 @@ function startGame() {
 
 //Game assets
 
-var audio = new Audio('thevoicestart1.mp3');
+var audio = new Audio('../Assets/Sounds/thevoicestart1.mp3');
 
   //Game Loader
   document.addEventListener('DOMContentLoaded', function() {
