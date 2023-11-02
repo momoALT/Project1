@@ -1,0 +1,13 @@
+canvas {
+  border: 1px solid #5e5e5e;
+  background-color: #000000;
+}
+
+body  {
+  
+  background-color: #000000;
+}
+
+#thevoice{
+  display: none;
+}

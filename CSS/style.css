@@ -1,0 +1,245 @@
+
+#box {
+  width: 1px;
+  margin: 100px auto;
+  background: rgb(0, 0, 0);
+}
+
+.notloggedtext{
+  color: red;
+  position: relative;
+  left: 140px;
+}
+.signuptext{
+  color: white;
+  position: absolute;
+  left: 210px;
+}
+.loggedtext{
+  color: green;
+  position: absolute;
+  left: 140px;
+}
+.box {
+  position: absolute;
+  display: flex;
+  border-radius: 12px;
+  width: 500px;
+  height: 400px;
+
+ /* margin-left: 600px;
+  margin-top: 120px;
+  */
+  background-color: rgb(0, 0, 0);
+  
+  left: 40%;
+  bottom: 40%;
+  transform: translate(-40%, 0%)
+}
+.leaderboardbox {
+  display: flex;
+  position: absolute;
+  border-radius: 12px;
+  width: 350px;
+  height: 400px;
+  
+  /* margin-top: 120px; */
+  background-color: rgb(0, 0, 0);
+  left: 62%;
+  bottom: 40%;
+  transform: translate(-62%, 0%)
+}
+
+body  {
+  
+  background-image: url("../Assets/gamebg2.gif");
+  background-size: cover;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.loginprompt{
+  position: relative;
+  top: 150px;
+  right: 130px;
+}
+.loggedin{
+  position: relative;
+  top: 120px;
+  left: 20px;
+}
+.signupdiv{
+  position: relative;
+  top: 105px;
+  left: 105px;
+  
+}
+
+.signupsubmit{
+  position: absolute;
+  left: 110px;
+  border-radius: 12px;
+  background-color: #b9ffdc;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  transition: 0.3s;
+}
+.signupsubmit:hover {
+  background-color: #26ae5f;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  left: 105px;
+}
+.user{
+  color: white;
+  position: relative;
+  
+}
+.pass{
+  color: white;
+  position: relative;
+}
+.pass2{
+  color: white;
+  position: relative;
+  right: 63px;
+  }
+  .passboxretype{
+  position: relative;
+  right: 60px;
+  }
+.email{
+  color: white;
+  position: absolute;
+  right: 235px;
+  }
+.emailbox{
+  position: absolute;
+  left: 73px;
+}
+.phone{
+  position: absolute;
+  color: white;
+  left: -30px;
+}
+.phonebox{
+  position: absolute;
+  left: 73px;
+}
+
+  
+.sub{
+  position: absolute;
+  border-radius: 12px;
+  background-color: #b9bbff;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  left: 120px;
+  top: 100px;
+  transition: 0.3s;
+}
+.sub:hover {
+  background-color: #306dc3;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  left: 115px;
+  top: 98px;
+}
+
+.tryagainclass {
+  color: red;
+  position: absolute;
+  top: 70px;
+  left: 35px;
+  font-size: small;
+  background: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.createaccounttext{
+  color: white;
+  position: relative;
+  left: 40px;
+  top: 20px;
+}
+
+.backtologin{
+  color: white;
+  position: absolute;
+  left: 5px;
+  top: 220px;
+}
+.clickherebutton{
+  color: rgb(96, 96, 255);
+  background-color: #000000;
+  border: none;
+  text-decoration: underline;
+  font-size: large;
+  position: relative;
+  left: 95px;
+  top: 0px;
+}
+.logout{
+  color: rgb(255, 255, 255);
+  border-radius: 12px;
+  background-color: #c12020;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  font-size: large;
+  position: absolute;
+  left: 190px;
+  bottom: 150px;
+  transition: 0.3s;
+}
+.gamelogo{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)
+}
+.rankingtext{
+  color: red;
+  position: relative;
+  left: 100px
+}
+.passbox{
+  position: relative;
+  left: 4px;
+}
+
+.leaderboard{
+  color: aliceblue;
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  white-space: pre-line;
+}
+
+.loginorsignupclass{
+  color: white;
+  position: absolute;
+  left: 130px;
+  bottom: 380px;
+  font-size: large;
+  font: bold;
+  
+}
+.leadername{
+  color: aliceblue;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  white-space: pre-line;
+}
+
+.leaderscore{
+  color: red;
+  position: absolute;
+  left: 180px;
+  top: 50px;
+  white-space: pre-line;
+}
