@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    
+    <title>Game Website</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+   
+    <img class="gamelogo" src="GameLogo3.png">
+    
+    
+
+<div class="container1">
+    <div class="box">
+      <div class="logintext">
+
+      
+      <h2 class="signuptext" id="signuptext">Sign-Up</h2>
+    </div>
+
+      <div class="signupdiv">
+        <br>
+        <label for="uname" class="user"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="newusernameentered"  class="userbox2" name="uname2" required>
+      </br>
+      <br>
+        <label for="psword" class="pass"><b>Password</b></label>
+        <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required>
+    </br>
+
+    <br>
+    <label for="psword2" class="pass2"><b>Re-enter Password</b></label>
+    <input class="passboxretype" type="password" placeholder="Re-enter Password" id="passwordretypeentered" name="pswrt" required>
+    </br>
+
+        <br>
+        <button  id="signupID" class="signupsubmit" onclick="
+        createUser(document.getElementById('newusernameentered').value, document.getElementById('passwordentered').value, document.getElementById('passwordretypeentered').value);
+        
+        "
+        >Sign-Up</button>
+      </br>
+      <p id="tryagaintext" class="tryagainclass"></p>
+      
+      <br>
+      <h2 class="backtologin" id="backtologinID">To go back to the login page:</h2>
+    </br>
+    <button class="clickherebutton" onclick="window.location.href = 'index.html'">Click Here</button>
+      </div>
+
+      
+      
+      
+    </div>
+    
+  </div>  
+  <div class="leaderboardbox">
+    <h2 class="rankingtext">Live Ranking</h2>
+    <p class="leaderboard" id="leaderboardID">
+      #1
+      #2
+      #3</p>
+      <p class="leadername" id="leadernameID"></p>
+      <p class="leaderscore" id="leaderscoreID"></p>
+    </div>  
+  
+    <script src="FunctionsAndDatabase.js">
+   
+    </script>
+    </body>
+</html>
