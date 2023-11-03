@@ -54,13 +54,6 @@ DataFormat.score = 0;
 
 NewUser.push(DataFormat);
 
-// var stored = DataSetMain;
-// stored.push(DataFormat);
-
-// localStorage.setItem('DataSet', JSON.stringify(stored));
-// console.log(DataSetMain)
-
-
 
 //-----------------------------FUNCTIONS------------------------------
 
@@ -76,9 +69,9 @@ function addUser(username, password) {
   localStorage.setItem('DataSet', JSON.stringify(stored));
   console.log(DataSetMain)
 }
-//addUser("mysterylights", "loltrey");
 
-//createUser function, main function for creating a new user
+
+//createUser function is the main function for creating a new user
 function createUser(username, password, retype) {
   userFind(username);
   if (userFoundValue === false && password === retype) {
@@ -149,8 +142,6 @@ function AllUsers(cnum) {
   }
 }
 
-//AllUsers();
-
 //Specific User function, main function for logging a user in.
 function SpecificUser(cnum, user, pass) {
   if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
@@ -216,10 +207,6 @@ function userFind(user) {
 }
 
 
-
-console.log(JSON.parse(localStorage.getItem('DataSet')))
-
-
 //LEADERBOARD FUNCTION
 let LeaderIndex = 0;
 let hasSetLeader = 0;
@@ -262,29 +249,6 @@ function logout() {
   localStorage.setItem('user', currentUser)
   console.log("has logged out")
 }
-
-
-
-
-//console.log(DataSetMain[1].password === "password1234")
-//console.log(currentNum === DataSetLength)
-console.log(currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != "user3")
-console.log(currentNum)
-console.log(flexibleNum)
-
-
-/*function GameStart(playerUsername) {
-  console.log("game starting")
-}
-function GameEnd(currentScore) {
-
-}
-*/
-//console.log(document.getElementById("passwordentered").value)
-//console.log(document.getElementById("usernameentered").value)
-
-
-
 
 
 function saveUser(username, password, id) {

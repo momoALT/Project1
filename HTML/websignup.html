@@ -4,8 +4,8 @@
 
 <head>
 
-  <title>Game Website</title>
-  <link rel="stylesheet" href="/CSS/style.css">
+  <title>Game Website</title><!--Page Title-->
+  <link rel="stylesheet" href="/CSS/style.css"><!--Style Reference-->
 </head>
 
 <body>
@@ -19,38 +19,40 @@
       <div class="logintext">
 
 
-        <h2 class="signuptext" id="signuptext">Sign-Up</h2>
+        <h2 class="signuptext" id="signuptext">Sign-Up</h2><!--Page Title-->
       </div>
 
       <div class="signupdiv">
         <br>
-        <label for="uname" class="user"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" id="newusernameentered" class="userbox2" name="uname2" required>
+        <label for="uname" class="user"><b>Username</b></label><!--Input Title-->
+        <input type="text" placeholder="Enter Username" id="newusernameentered" class="userbox2" name="uname2" required><!--Input for Usernamee-->
         </br>
         <br>
-        <label for="psword" class="pass"><b>Password</b></label>
-        <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required>
+        <label for="psword" class="pass"><b>Password</b></label><!--Input Title-->
+        <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required><!--Input for Password-->
         </br>
 
         <br>
-        <label for="psword2" class="pass2"><b>Re-enter Password</b></label>
+        <label for="psword2" class="pass2"><b>Re-enter Password</b></label><!--Input Title-->
         <input class="passboxretype" type="password" placeholder="Re-enter Password" id="passwordretypeentered"
-          name="pswrt" required>
+          name="pswrt" required><!--Input for Password Re-type-->
         </br>
 
         <br>
 
-        <label for="eml" class="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" id="emailentered" class="emailbox" name="emailname" required>
+        <label for="eml" class="email"><b>Email</b></label><!--Input Title-->
+        <input type="text" placeholder="Enter Email" id="emailentered" class="emailbox" name="emailname" required><!--Input for Email-->
 
         </br>
 
         <br>
-        <label for="number" class="phone"><b>Phone number</b></label>
-        <input type="text" placeholder="Enter Phone Number" id="phoneentered" class="phonebox" name="pnum" required>
+        <label for="number" class="phone"><b>Phone number</b></label><!--Input Title-->
+        <input type="text" placeholder="Enter Phone Number" id="phoneentered" class="phonebox" name="pnum" required><!--Input for Phone Number-->
         </br>
 
         <br>
+
+        <!--Submit button for creating new account, calls create user function.-->
         <button id="signupID" class="signupsubmit" onclick="
 createUser(document.getElementById('newusernameentered').value, document.getElementById('passwordentered').value, document.getElementById('passwordretypeentered').value);
 
@@ -59,17 +61,14 @@ createUser(document.getElementById('newusernameentered').value, document.getElem
         <p id="tryagaintext" class="tryagainclass"></p>
 
         <br>
-        <h2 class="backtologin" id="backtologinID">To go back to the login page:</h2>
+        <h2 class="backtologin" id="backtologinID">To go back to the login page:</h2><!--Login page redirect text-->
         </br>
 
-        <button class="clickherebutton" onclick="window.location.href = '../index.html'">Click Here</button>
+        <button class="clickherebutton" onclick="window.location.href = '../index.html'">Click Here</button><!--Login page redirect button-->
       </div>
-
-
-
-
     </div>
-    
+
+    <!--Leaderboard HTML set-up-->
     <div class="leaderboardbox">
       <h2 class="rankingtext">Live Ranking</h2>
       <p class="leaderboard" id="leaderboardID">
@@ -82,10 +81,7 @@ createUser(document.getElementById('newusernameentered').value, document.getElem
 
   </div>
   
-
-  <script src="../JavaScript/FunctionsAndDatabase.js">
-
-  </script>
+  <!--JS Reference-->
+  <script src="../JavaScript/FunctionsAndDatabase.js"></script>
 </body>
-
 </html>

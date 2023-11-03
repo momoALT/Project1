@@ -4,32 +4,29 @@
 
 <head>
 
-  <title>Game Website</title>
-  <link rel="stylesheet" href="../CSS/style.css">
+  <title>Game Website</title> <!--Page Title-->
+  <link rel="stylesheet" href="../CSS/style.css"> <!--Style Reference-->
 </head>
 
 <body>
-
+<!--Game Logo Reference-->
   <img class="gamelogo" src="../Assets/GameLogo3.png">
 
 
-
+<!--Main div for Login/Signup box & Leaderboard-->
   <div class="container1">
     <div class="box">
       <div class="logintext">
-
-
-        <h2 class="loggedtext" id="loggedtext">Welcome, </h2>
+        <h2 class="loggedtext" id="loggedtext">Welcome, </h2> <!--Page title when logged in-->
       </div>
 
       <div class="loggedin">
 
-        <button class="playbutton" onclick="
-window.location.href = '../HTML/game.html';">Play</button>
+        <button class="playbutton"> <!--onclick="window.location.href = '../HTML/game.html';"-->Play</button> <!--Play Button-->
         <br>
         <br>
         </br>
-        <button class="howtoplaybutton" onclick="window.location.href = 'howtoplay.html'">How to play</button>
+        <button class="howtoplaybutton" onclick="window.location.href = 'howtoplay.html'"></button>>How to play</button>
 
         <button class="logout" onclick="window.location.href = '../index.html'">Logout</button>
       </div>
@@ -38,7 +35,7 @@ window.location.href = '../HTML/game.html';">Play</button>
 
 
     </div>
-
+    <!--Leaderboard HTML set-up-->
     <div class="leaderboardbox">
       <h2 class="rankingtext">Live Ranking</h2>
       <p class="leaderboard" id="leaderboardID">
@@ -51,7 +48,7 @@ window.location.href = '../HTML/game.html';">Play</button>
 
   </div>
 
-
+<!--JS Reference-->
   <script src="../JavaScript/FunctionsAndDatabase.js"></script>
 
 </body>
