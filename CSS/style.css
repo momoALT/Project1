@@ -288,6 +288,8 @@ body  {
 }
 
 /*-----------------HOW TO PLAY PAGE STYLE -------------------*/
+
+/*Back button for how to play page*/
 .backbutton{
   position: absolute;
   right: 450px;
@@ -304,6 +306,7 @@ body  {
 .backbutton:hover{
   transform: scale(1.15) rotate(-2deg);
 }
+/*How to Play page title style*/
 .howtoclass{
   color: rgb(189, 60, 0);
   position: absolute;
@@ -313,6 +316,8 @@ body  {
   font: bold;
   
 }
+
+/*The main text for how to play*/
 .howtoplaytext{
   position: relative;
   text-align: center;
@@ -321,21 +326,21 @@ body  {
   font-size: 13px;
 }
 
-.bluestar{
+.bluestar{/*Blue Star Image Style*/
   position: absolute;
   top: 210px;
   left: 20px;
   width: 40px;
   
 }
-.redstar{
+.redstar{/*Red Star Image Style*/
   position: absolute;
   top: 210px;
   left: 70px;
   width: 40px;
   
 }
-.goldstar{
+.goldstar{/*Gold Star Image Style*/
   position: absolute;
   top: 210px;
   left: 120px;
