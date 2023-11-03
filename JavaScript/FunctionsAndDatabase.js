@@ -1,9 +1,14 @@
 
-let currentUser = undefined;
-let DataSet1 = JSON.parse(localStorage.getItem('DataSet'));
 
-if (DataSet1 === null) {
-  DataSet1 = [
+//-------------------------DATASET INITIALIZATION AND SET UP----------------------
+
+let currentUser = undefined; // Current user logged in.
+
+
+
+
+if (localStorage.getItem("DataSet") === "null") { //If Dataset does not exist, creates brand new Dataset.
+  let d1 = [
     {
       username: "BeastPro10",
       password: "password123",
@@ -21,20 +26,26 @@ if (DataSet1 === null) {
     },
 
   ]
-}
-const DatasetStringified = JSON.stringify(DataSet1);
-localStorage.setItem('DataSet', DatasetStringified);
-const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length;
-const DataSetMain = JSON.parse(localStorage.getItem('DataSet'));
+console.log('made')
+  localStorage.setItem('DataSet', JSON.stringify(d1))
+  
+};
+
+let DataSet1 = JSON.parse(localStorage.getItem('DataSet')); // main Dataset initialized
+const DatasetStringified = JSON.stringify(DataSet1); // Converts Dataset into string
+localStorage.setItem('DataSet', DatasetStringified); // Adds Dataset into Localstorage
+const DataSetLength = JSON.parse(localStorage.getItem('DataSet')).length; // Converts Dataset back to object and gets length of Dataset.
+const DataSetMain = JSON.parse(localStorage.getItem('DataSet')); //Converts Dataset back to an Object.
 
 
-let DataFormat = {
+
+let DataFormat = { // Format for creating new users.
   username: undefined,
   password: undefined,
   score: undefined
 }
 
-let loggedUser = undefined;
+let loggedUser = undefined; // The current user, changes to logged in username
 var NewUser = [];
 
 DataFormat.username = "tester";
@@ -49,6 +60,12 @@ NewUser.push(DataFormat);
 // localStorage.setItem('DataSet', JSON.stringify(stored));
 // console.log(DataSetMain)
 
+
+
+//-----------------------------FUNCTIONS------------------------------
+
+
+//addUser function, instantly adds user through console (used for recovering deleted users)
 function addUser(username, password) {
 
   var stored = DataSetMain;
@@ -61,6 +78,7 @@ function addUser(username, password) {
 }
 //addUser("mysterylights", "loltrey");
 
+//createUser function, main function for creating a new user
 function createUser(username, password, retype) {
   userFind(username);
   if (userFoundValue === false && password === retype) {
@@ -88,6 +106,7 @@ function createUser(username, password, retype) {
 
 }
 
+//Remove User Function, removes specific users in existing dataset
 let removeUserNumber = 0;
 function removeUser(username) {
   if (removeUserNumber >= 0 && removeUserNumber < DataSetLength && DataSetMain[removeUserNumber].username != username) {
@@ -111,18 +130,14 @@ function removeUser(username) {
   }
 }
 
-console.log()
-console.log(true == 0);
-console.log(DataSetLength);
-
-
-
 
 console.log(DataSetMain.sort(function (a, b) { return b.score - a.score }))
 let currentNum = 0;
 let flexibleNum = 0;
 let mainUser = "";
 
+
+//Function that prints every existing user in the dataset
 function AllUsers(cnum) {
   if (currentNum >= 0 && currentNum < DataSetLength) {
     console.log(DataSetMain[currentNum].username)
@@ -136,6 +151,7 @@ function AllUsers(cnum) {
 
 //AllUsers();
 
+//Specific User function, main function for logging a user in.
 function SpecificUser(cnum, user, pass) {
   if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
 
@@ -155,6 +171,7 @@ function SpecificUser(cnum, user, pass) {
   }
 }
 
+//User Checker Function, Checks if user exists in the dataset.
 function UserChecker(cnum, user, pass) {
   if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
 
@@ -174,8 +191,9 @@ function UserChecker(cnum, user, pass) {
   }
 }
 
-let userFoundValue = undefined;
 
+//User finder, (Finds a specific user in the dataset)
+let userFoundValue = undefined;
 function userFind(user) {
   if (currentNum >= 0 && currentNum < DataSetLength && DataSetMain[currentNum].username != user) {
 
@@ -202,7 +220,7 @@ function userFind(user) {
 console.log(JSON.parse(localStorage.getItem('DataSet')))
 
 
-
+//LEADERBOARD FUNCTION
 let LeaderIndex = 0;
 let hasSetLeader = 0;
 function SetLeaderboard() {
@@ -223,7 +241,7 @@ if (window.location.pathname != '../HTML/game.html') {
 }
 
 
-
+//Password compare function when creating new account
 function PasswordCompare(userIndex, pass, user) {
   if (DataSetMain[userIndex].password === pass && document.getElementById("logorsigID").innerHTML === "Login") {
     console.log("correct pass... logging in")
@@ -255,34 +273,28 @@ console.log(currentNum)
 console.log(flexibleNum)
 
 
-function GameStart(playerUsername) {
+/*function GameStart(playerUsername) {
   console.log("game starting")
 }
 function GameEnd(currentScore) {
 
 }
+*/
 //console.log(document.getElementById("passwordentered").value)
 //console.log(document.getElementById("usernameentered").value)
 
 
-function loginToAccount(username, password) {
-  if (document.getElementById("usernameentered").value === AllUsers() && document.getElementById("passwordentered").value) {
 
-  }
-}
-function createAccount(username, password, retype) {
-  if (password === retype) {
-    console.log("creating account.")
 
-  }
-}
 
 function saveUser(username, password, id) {
   localStorage.setItem('user', username)
 }
 
 console.log(currentUser);
-if (window.location.pathname == '/HTML/loggedinpage.html') {
+
+
+if (window.location.pathname == '/HTML/loggedinpage.html') { //Adds welcome title when logged in.
   document.getElementById('loggedtext').innerHTML = "Welcome, " + localStorage.getItem('user');
 }
 

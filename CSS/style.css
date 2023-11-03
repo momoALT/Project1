@@ -1,4 +1,11 @@
 
+/*Game Logo*/
+.gamelogo{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
 #box {
   width: 1px;
   margin: 100px auto;
@@ -65,78 +72,30 @@ body  {
   
   transform: translate(-60%, -20%)
 }
+
+/*----------Styles for Login and Signup texts and buttons------------*/
+
+/*------------LOGIN PAGE STYLE------------*/
+
+/*Login title*/
+.loginorsignupclass{
+  color: white;
+  position: absolute;
+  left: 130px;
+  bottom: 380px;
+  font-size: large;
+  font: bold;
+  
+}
+
+/*Login text*/
 .loginprompt{
   position: relative;
   top: 150px;
   right: 130px;
 }
-.loggedin{
-  position: relative;
-  top: 120px;
-  left: 20px;
-}
-.signupdiv{
-  position: relative;
-  top: 105px;
-  left: 105px;
-  
-}
 
-.signupsubmit{
-  position: absolute;
-  left: 110px;
-  border-radius: 12px;
-  background-color: #b9ffdc;
-  border: none;
-  font-size: 15px;
-  display: inline-block;
-  transition: 0.3s;
-}
-.signupsubmit:hover {
-  background-color: #26ae5f;
-  color: white;
-  border-radius: 5px;
-  font-size: 20px;
-  left: 105px;
-}
-.user{
-  color: white;
-  position: relative;
-  
-}
-.pass{
-  color: white;
-  position: relative;
-}
-.pass2{
-  color: white;
-  position: relative;
-  right: 63px;
-  }
-  .passboxretype{
-  position: relative;
-  right: 60px;
-  }
-.email{
-  color: white;
-  position: absolute;
-  right: 235px;
-  }
-.emailbox{
-  position: absolute;
-  left: 73px;
-}
-.phone{
-  position: absolute;
-  color: white;
-  left: -30px;
-}
-.phonebox{
-  position: absolute;
-  left: 73px;
-}
-
-  
+/*Submit button for login page & hover transition*/
 .sub{
   position: absolute;
   border-radius: 12px;
@@ -157,6 +116,19 @@ body  {
   top: 98px;
 }
 
+/*username text (LOGIN)*/
+.user{
+  color: white;
+  position: relative;
+  
+}
+/*password text (LOGIN)*/
+.pass{
+  color: white;
+  position: relative;
+}
+
+/*Wrong information entered text*/
 .tryagainclass {
   color: red;
   position: absolute;
@@ -168,6 +140,9 @@ body  {
   white-space: nowrap;
 }
 
+/*-----------SIGN-UP PAGE STYLE-------------*/
+
+/*Create account Title*/
 .createaccounttext{
   color: white;
   position: relative;
@@ -175,12 +150,77 @@ body  {
   top: 20px;
 }
 
+/*Container for sign-up page*/
+.signupdiv{
+  position: relative;
+  top: 105px;
+  left: 105px;
+  
+}
+
+/*password text & password re-type text (FOR SIGN-UP)*/
+.pass2{
+  color: white;
+  position: relative;
+  right: 63px;
+  }
+  /*password retype input-box*/
+  .passboxretype{
+  position: relative;
+  right: 60px;
+  }
+
+  /*email text & input-box*/
+.email{
+  color: white;
+  position: absolute;
+  right: 235px;
+  }
+.emailbox{
+  position: absolute;
+  left: 73px;
+}
+
+/*phone text & input-box*/
+.phone{
+  position: absolute;
+  color: white;
+  left: -30px;
+}
+.phonebox{
+  position: absolute;
+  left: 73px;
+}
+
+/*Button for Sign-up/Creating new account*/
+.signupsubmit{
+  position: absolute;
+  left: 110px;
+  border-radius: 12px;
+  background-color: #b9ffdc;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  transition: 0.3s;
+}
+/*Hover animation for Sign-up button*/
+.signupsubmit:hover {
+  background-color: #26ae5f;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  left: 105px;
+}
+
+
+/*Text for going back to the login page*/
 .backtologin{
   color: white;
   position: absolute;
   left: 5px;
   top: 220px;
 }
+/*Button to go back to login page*/
 .clickherebutton{
   color: rgb(96, 96, 255);
   background-color: #000000;
@@ -191,10 +231,23 @@ body  {
   left: 95px;
   top: 0px;
 }
+
+
+
+/*-----------LOGGED IN PAGE-----------*/
+/*Logged-in text*/
+.loggedin{
+  position: relative;
+  top: 120px;
+  left: 20px;
+}
+
+/*Logout Button*/
 .logout{
   color: rgb(255, 255, 255);
   border-radius: 12px;
   background-color: #c12020;
+  padding: 5px 10px;
   border: none;
   font-size: 15px;
   display: inline-block;
@@ -204,21 +257,102 @@ body  {
   bottom: 150px;
   transition: 0.3s;
 }
-.gamelogo{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%)
+.logout:hover{
+  transform: scale(1.15);
 }
+.playbutton{
+  color: rgb(42, 122, 42);
+  border-radius: 12px;
+  padding: 7px 10px;
+  background-color: #88ff86;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  transition: 0.3s;
+}
+.playbutton:hover{
+  transform: scale(1.15) rotate(-2deg);
+}
+.howtoplaybutton{
+  color: rgb(101, 67, 35);
+  border-radius: 12px;
+  background-color: #ff6701;
+  padding: 7px 20px;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  transition: 0.3s;
+}
+.howtoplaybutton:hover{
+  transform: scale(1.15) rotate(2deg);
+}
+
+/*-----------------HOW TO PLAY PAGE STYLE -------------------*/
+.backbutton{
+  position: absolute;
+  right: 450px;
+  top: -100px;
+  color: rgb(122, 42, 42);
+  border-radius: 12px;
+  padding: 7px 10px;
+  background-color: #fd4b4b;
+  border: none;
+  font-size: 15px;
+  display: inline-block;
+  transition: 0.3s;
+}
+.backbutton:hover{
+  transform: scale(1.15) rotate(-2deg);
+}
+.howtoclass{
+  color: rgb(189, 60, 0);
+  position: absolute;
+  left: 170px;
+  bottom: 300px;
+  font-size: 30px;
+  font: bold;
+  
+}
+.howtoplaytext{
+  position: relative;
+  text-align: center;
+  color: white;
+  top: 60px;
+  font-size: 13px;
+}
+
+.bluestar{
+  position: absolute;
+  top: 210px;
+  left: 20px;
+  width: 40px;
+  
+}
+.redstar{
+  position: absolute;
+  top: 210px;
+  left: 70px;
+  width: 40px;
+  
+}
+.goldstar{
+  position: absolute;
+  top: 210px;
+  left: 120px;
+  width: 40px;
+  
+}
+
+/*--------------------- LEADERBOARD STYLE ---------------------------*/
+
+/*Leaderboard title*/
 .rankingtext{
   color: red;
   position: relative;
   left: 100px
 }
-.passbox{
-  position: relative;
-  left: 4px;
-}
 
+/*Leaderboard ranks 1-10*/
 .leaderboard{
   color: aliceblue;
   position: absolute;
@@ -227,15 +361,7 @@ body  {
   white-space: pre-line;
 }
 
-.loginorsignupclass{
-  color: white;
-  position: absolute;
-  left: 130px;
-  bottom: 380px;
-  font-size: large;
-  font: bold;
-  
-}
+/*Leaderboard player names*/
 .leadername{
   color: aliceblue;
   position: absolute;
@@ -244,10 +370,16 @@ body  {
   white-space: pre-line;
 }
 
+/*Leaderboard player scores*/
 .leaderscore{
   color: red;
   position: absolute;
   left: 180px;
   top: 50px;
   white-space: pre-line;
+}
+
+.passbox{
+  position: relative;
+  left: 4px;
 }
