@@ -23,3 +23,22 @@ html, body {
 #imageID{
  position: absolute;
 }
+
+@keyframes thevoicemovement {
+  
+  0% {left: 50%; top: 20%;}
+  25% {left: 40%; top: 10%; rotation: -30deg;}
+  50% {left: 50%; top: 20%; motion-rotation: 0deg;}
+  75% {left: 60%; top: 10%; motion-rotation: 3deg;}
+  100% {left: 50%; top: 20%; motion-rotation: 0deg;}
+}
+#thevoiceimage{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  animation-name: thevoicemovement;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
