@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Game Website</title><!--Page Title-->
+  <link rel="stylesheet" href="../CSS/style.css"><!--Style Reference-->
+</head>
+
+<body>
+
+  <img class="gamelogo" src="../Assets/GameLogo3.png">
+
+
+
+
+
+  <div class="container1">
+    <div class="box">
+      <div class="howtoplaydiv">
+        <!--Image references-->
+        <img class="bluestar" src="../Assets/Images/bluestar.png">
+        <img class="redstar" src="../Assets/Images/redstar.png">
+        <img class="goldstar" src="../Assets/Images/goldstar.png">
+        <h2 class="howtoclass" id="howtoID">How to Play</h2><!--Box title-->
+
+        <!--------------GAME TEXT-------------->
+        <p class="howtoplaytext">The game character is the mouse cursor!</p>
+
+        <p class="howtoplaytext">try to survive without getting hit once, if you get hit the game will end.</p>
+
+        <p class="howtoplaytext">this game is made up of several timed survival minigames, not completing a minigame in
+          time will end the game. However, completing a minigame in time will go into the next minigame.</p>
+
+        <p class="howtoplaytext">occasionally, stars will spawn, there are 3 different type and each give a different
+          amount of points (100, 250, 500) so try and collect as many as you can and rack up points without dying.</p>
+        <br>
+        </br>
+        <p class="howtoplaytext">At the end of each completed minigame there is a chance that you can obtain rare items.
+          the type of item you recieve can be told by the color: Red = Cursed Item, Gold = Blessed item.</p>
+        <br>
+        </br>
+        <p class="howtoplaytext">Thats all you need to know to get started, enjoy!</p>
+      </div>
+
+      <div class="loggedin">
+
+        <button class="backbutton" onclick="window.location.href = 'loggedinpage.html';">Back</button><!--Back button, takes back to the logged in page-->
+        <br>
+      </div>
+    </div>
+
+    <!--Leaderboard HTML set-up-->
+    <div class="leaderboardbox">
+      <h2 class="rankingtext">Live Ranking</h2>
+      <p class="leaderboard" id="leaderboardID">
+        #1
+        #2
+        #3</p>
+      <p class="leadername" id="leadernameID"></p>
+      <p class="leaderscore" id="leaderscoreID"></p>
+    </div>
+  </div>
+
+  <script src="../JavaScript/FunctionsAndDatabase.js"></script><!--JS Ref-->
+
+</body>
+</html>

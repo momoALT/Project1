@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Game Website</title><!--Page Title-->
+  <link rel="stylesheet" href="/CSS/style.css"><!--Style Reference-->
+</head>
+
+<body>
+
+  <img class="gamelogo" src="/Assets/GameLogo3.png"><!--Game Logo Reference-->
+
+
+
+  <div class="container1"><!--Container to move everything at once-->
+    <div class="box"><!--Container to only move login box for adjustments-->
+      <div class="logintext"><!--Container to move specific part-->
+
+
+        <h2 class="notloggedtext" id="notloggedtext">You are not Logged-in!</h2><!--Login page header-->
+      </div>
+
+        <!-----------------LOGIN ELEMENTS---------------->
+
+      <div class="loginprompt">
+        <br>
+        <label for="uname" class="user"><b>Username</b></label><!--Input Title-->
+        <input type="text" placeholder="Enter Username" id="usernameentered" class="userbox" name="uname" required><!--Input for Usernamee-->
+        </br>
+
+        <br>
+        <label for="psword" class="pass"><b>Password</b></label><!--Input Title-->
+        <input class="passbox" type="password" placeholder="Enter Password" id="passwordentered" name="psw" required><!--Input for Password-->
+        </br>
+
+        <br>
+
+        <!--Submit button to login, calls function to login-->
+        <button type="submit" id="logorsigID" class="sub"
+          onclick="SpecificUser(currentNum, document.getElementById('usernameentered').value, document.getElementById('passwordentered').value);">Login</button>
+        </br>
+
+        <p id="tryagaintext" class="tryagainclass"></p><!--if incorrect password / username is entered, InnerHTML changes through Javascript.-->
+        <p id="loginorsignupID" class="loginorsignupclass">Login:</p><!--Login Header-->
+
+        <!-----------------SIGN IN PAGE REDIRECT ELEMENTS----------------->
+        <br>
+        <h2 class="createaccounttext" id="createacctxt">To create an account:</h2><!--Sign in page Text-->
+        </br>
+        <button class="clickherebutton" onclick="window.location.href = 'HTML/websignup.html'">Click Here</button><!--Sign-In page Button-->
+      </div>
+    </div>
+
+    <!--Leaderboard HTML set-up-->
+    <div class="leaderboardbox">
+      <h2 class="rankingtext">Live Ranking</h2>
+      <p class="leaderboard" id="leaderboardID">
+        #1
+        #2
+        #3</p>
+      <p class="leadername" id="leadernameID"></p>
+      <p class="leaderscore" id="leaderscoreID"></p>
+    </div>
+
+  </div>
+  
+  <!--JS Reference-->
+  <script src="/JavaScript/FunctionsAndDatabase.js">
+
+  </script>
+</body>
+</html>
