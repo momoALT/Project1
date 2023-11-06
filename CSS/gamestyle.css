@@ -1,9 +1,16 @@
+
 /*Game Canvas Style*/
+@font-face {
+  font-family: 'BruceForever';
+  src: url('../Assets/fonts/BruceForeverRegular-X3jd2.ttf');
+}
+
 canvas {
   
   border: 1px solid #5e5e5e;
   background-color: #000000;
   display: block;
+  
 }
 
 /*Html Body Style*/

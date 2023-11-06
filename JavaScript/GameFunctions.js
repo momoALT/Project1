@@ -11,6 +11,10 @@ function startGame() { //Starts game
 
 
 //-----------------------------------GAME ASSETS-----------------------------------------
+//FONTS
+var gameFont = new FontFace('BruceRegular', 'url(../Assets/fonts/BruceForever.ttf)');
+
+
 
 //Images
 let topSwordImg;
@@ -18,6 +22,11 @@ let bottomSwordImg;
 let blueStarImg;
 let redStarImg;
 let goldStarImg;
+
+let skull1img;
+let skull2img;
+let skull3img;
+
 
 //Game Loader
 document.addEventListener('DOMContentLoaded', function () {
@@ -35,8 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
   
   goldStarImg = new Image();
   goldStarImg.src = "../Assets/Images/goldstar.png";
-  //startGame()
+  
+  skull1img = new Image();
+  skull1img.src = "../Assets/Images/skull1.png";
 
+  skull2img = new Image();
+  skull2img.src = "../Assets/Images/skull2.png";
+   
+skull3img = new Image();
+skull3img.src = "../Assets/Images/skull3upd.png";
+  
+//startGame()
 }, false);
 
 //Game sounds
@@ -58,19 +76,25 @@ let wallbottomY = walltopY - (window.innerHeight + 100);
 let velocityX = -20;
 
 
-
+let theCanvas;
 //CANVAS
 var MainGameCanvas = {
   canvas: document.createElement("canvas"), //New Canvas created
+  
   start: function () {
     var centerimg = window.innerWidth / 2;
     
+    
     //adding assets from images folder
     //TheVoiceImage = new component(100, 100, "../Assets/Images/thevoiceface.png", centerimg, 100, "image");
-    
+    this.canvas.setAttribute("id","canvas");
     context = this.canvas.getContext("2d");
     gameCanvas = this.canvas
-
+    gameFont.load().then(function(font) {
+      document.fonts.add(font);
+      context.font = '48px BruceRegular';
+      context.strokeText('Hello world', 100, 100);
+    });
     gameCanvas.width = window.innerWidth;
     gameCanvas.height = window.innerHeight;
     this.context = this.canvas.getContext("2d");
@@ -79,10 +103,11 @@ var MainGameCanvas = {
     this.interval = setInterval(updateGameArea, 20); //Setting canvas refresh time at 20ms
     setInterval(placeWall, 1000);
     setInterval(spawnStar, 1000);
+    setInterval(drawMe, 8000);
     this.context.fillStyle = "red";
     //this.context.fillRect(walltopX, walltopY, walltopWidth, walltopHeight);
     //this.context.fillRect(wallbottomX, wallbottomY, wallbottomWidth, wallbottomHeight);
-
+    
   },
   clear: function () {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -192,13 +217,14 @@ function mouseposition(event){
 MainGameCanvas.canvas.addEventListener("mousemove", mouseposition);
 
 function displayGameOver() {
-  context.font = "30px Arial";
+  MainGameCanvas.clear();
+  context.font = "30px BruceRegular";
   context.fillStyle = "red";
-  context.fillText("Game Over!", MainGameCanvas.canvas.width / 2 - 80, MainGameCanvas.canvas.height / 2);
+  context.fillText("Death has reached you.", (MainGameCanvas.canvas.width / 2) - 320, MainGameCanvas.canvas.height / 2);
 }
 
 function scoreDisplay() {
-  context.font = "30px Arial";
+  context.font = "30px BruceRegular";
   context.fillStyle = "white";
   context.fillText("Score: " + points, MainGameCanvas.canvas.width / 12 - 80, MainGameCanvas.canvas.height / 12);
 }
@@ -325,6 +351,104 @@ function placeWall(){
   wallArray.push(wallTop);
   wallArray.push(wallBottom);
   points += 50;
+}
+
+
+function spawnLazer(){
+  let randSpawn = Math.random()*5;
+
+ // if (randSpawn >= 9 && randSpawn <= 10) {
+  let lazer = {
+    img : skull1img,
+    x : window.width + 100,
+    y : window.height,
+    width: window.width / 3,
+    height: window.width / 3
+  }
+ // }
+};
+function despawnLazer(){};
+
+
+
+var ctx;
+var setHorL = false;
+var beamTime = 0;
+var transparency = 0;
+var complete = false;
+function drawMe () {
+    console.log("trying")
+    var canvas2 = document.getElementById("canvas");
+    ctx = canvas2.getContext("2d");
+
+    width = 0;
+    height = window.innerHeight;
+    x = Math.random() * 1000;
+    t = 1;
+
+    draw(ctx, width, height, x);
+}
+
+function draw (ctx, width, height, x) {
+    //ctx.beginPath();
+    ctx.fillStyle = "#ffffff";
+    //ctx.fillRect(0, 0, 900, 500);
+
+    ctx.fillStyle = 'rgba(255,255,255,' + transparency + ')';
+    ctx.fillRect(x, 0, width, height);
+
+    if (width < window.innerWidth / 15 && height === window.innerHeight && transparency != 1) {
+        console.log("1")
+        width += 10 / 4;
+        transparency += 0.17 / 7;
+        x -= 5 / 4;
+    }
+    else if (setHorL === false && beamTime < 200) {
+      console.log("2");
+      beamTime += 1;
+      width -= 4;
+      x += 2;
+      height += 2;
+      if(width <= (window.innerWidth / 15) / 2 && width >= ((window.innerWidth / 15) / 2) - 5){
+        setHorL = true;
+      }
+  }
+  else if (setHorL === true && beamTime < 200) {
+      console.log("3")
+      
+      beamTime += 1;
+      width += 4;
+      x -= 2
+      height += 1;
+      if(width >= window.innerWidth / 15){
+      setHorL = false;
+      } 
+    } else if (beamTime >= 200 && width >= 0) {
+        console.log("5")
+        width -= 5 / 4;
+        x += 2.5 / 4;
+        transparency -= 0.17 / 7;
+        console.log("transparency is" + transparency)
+    } else {
+        complete = true;
+        console.log("complete")
+        
+    }
+ if (complete != true) {
+  
+    requestAnimationFrame(function () {
+      draw(ctx, width, height, x, t);
+    });
+  
+
+    
+  } else if (complete === true) {
+    complete = false;
+    transparency = 0;
+    width = 0;
+    height = 500;
+    beamTime = 0;
+  }
 }
 
 
