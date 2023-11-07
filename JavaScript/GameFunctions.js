@@ -28,6 +28,8 @@ let skull2img;
 let skull3img;
 
 
+let skull;
+
 //Game Loader
 document.addEventListener('DOMContentLoaded', function () {
   topSwordImg = new Image();
@@ -54,8 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
 skull3img = new Image();
 skull3img.src = "../Assets/Images/skull3upd.png";
   
+skull = {
+  img : skull1img,
+  x : 500,
+  y : (window.innerWidth / 5) * -1,
+  width: window.innerWidth / 8,
+  height: window.innerWidth / 5
+};
 //startGame()
 }, false);
+
+
+
 
 //Game sounds
 
@@ -150,9 +162,12 @@ function component(width, height, color, x, y, type) { //Function to add assets
 
 
 
+$("<audio id='blaster'>").appendTo("body"); //Binds audio to body of document
+$("#blaster").attr("src", "../Assets/Sounds/blastsound.mp3"); //Audio Attributes with reference
 
 $("<audio id='audioElement'>").appendTo("body"); //Binds audio to body of document
 $("#audioElement").attr("src", "../Assets/Sounds/thevoicestart2.mp3").attr("autoplay", "autoplay"); //Audio Attributes with reference
+
 
 $("<image id='thevoiceimage'>").appendTo("body"); //Binds audio to body of document
 $("#thevoiceimage").attr("src", "../Assets/Images/thevoiceface.png"); //Audio Attributes with reference
@@ -232,6 +247,7 @@ function scoreDisplay() {
 //Function to Canvas and element positions
 function updateGameArea() {
   MainGameCanvas.clear();
+  
  // TheVoiceImage.newPos();
  // TheVoiceImage.update();
 console.log(points);
@@ -380,55 +396,76 @@ function drawMe () {
     console.log("trying")
     var canvas2 = document.getElementById("canvas");
     ctx = canvas2.getContext("2d");
-
+    
     width = 0;
     height = window.innerHeight;
-    x = Math.random() * 1000;
+    x = Math.random() * window.innerWidth;
     t = 1;
+    playBlasterSound();
+    draw(ctx, width, height, x, x);
 
-    draw(ctx, width, height, x);
+    //drawSkull(ctx, skull, x);
 }
 
-function draw (ctx, width, height, x) {
+function draw (ctx, width, height, x, rawx) {
     //ctx.beginPath();
-    ctx.fillStyle = "#ffffff";
+    
     //ctx.fillRect(0, 0, 900, 500);
-
+    skull.x = rawx - (skull.width / 2);
+    
+    ctx.fillStyle = "#ffffff";
     ctx.fillStyle = 'rgba(255,255,255,' + transparency + ')';
     ctx.fillRect(x, 0, width, height);
+    ctx.drawImage(skull.img, skull.x, skull.y, skull.width, skull.height);
 
-    if (width < window.innerWidth / 15 && height === window.innerHeight && transparency != 1) {
-        console.log("1")
-        width += 10 / 4;
-        transparency += 0.17 / 7;
-        x -= 5 / 4;
+    if(beamTime < 100){
+
+    beamTime += 1;
+    if(skull.y < (skull.height / 3) * -1){
+      skull.y += 10;
+      skull.img = skull1img;
     }
-    else if (setHorL === false && beamTime < 200) {
+  }
+    else if (width < window.innerWidth / 15 && height === window.innerHeight && transparency != 1) {
+        console.log("1")
+        width += 10;
+        transparency += 0.17;
+        x -= 5;
+        skull.img = skull2img;
+    }
+    else if (setHorL === false && beamTime < 300) {
       console.log("2");
+      skull.img = skull3img;
       beamTime += 1;
-      width -= 4;
-      x += 2;
+      width -= 8;
+      x += 4;
       height += 2;
       if(width <= (window.innerWidth / 15) / 2 && width >= ((window.innerWidth / 15) / 2) - 5){
         setHorL = true;
       }
   }
-  else if (setHorL === true && beamTime < 200) {
+  else if (setHorL === true && beamTime < 300) {
       console.log("3")
       
       beamTime += 1;
-      width += 4;
-      x -= 2
+      width += 8;
+      x -= 4
       height += 1;
       if(width >= window.innerWidth / 15){
       setHorL = false;
       } 
-    } else if (beamTime >= 200 && width >= 0) {
+    } else if (beamTime >= 300 && width >= 0) {
+      if (skull.y > skull.height * -1) {
+        skull.y -= 10;
+      }
         console.log("5")
         width -= 5 / 4;
         x += 2.5 / 4;
         transparency -= 0.17 / 7;
-        console.log("transparency is" + transparency)
+        skullGoUp = true;
+        skull.img = skull3img;
+        console.log("DONEEEEEEEEEEEEEEEEEEEE")
+
     } else {
         complete = true;
         console.log("complete")
@@ -437,7 +474,7 @@ function draw (ctx, width, height, x) {
  if (complete != true) {
   
     requestAnimationFrame(function () {
-      draw(ctx, width, height, x, t);
+      draw(ctx, width, height, x, rawx);
     });
   
 
@@ -448,7 +485,73 @@ function draw (ctx, width, height, x) {
     width = 0;
     height = 500;
     beamTime = 0;
+    skull.y = skull.height * -1
+    globalSkullHeight = skull.height;
   }
 }
 
+var skullGoUp = false;
+var skulltime = 0;
+function playBlasterSound() {
+  var audio = document.getElementById("blaster");
+  audio.play();
+}
 
+let globalSkullHeight = skull.height;
+
+function drawSkull (ctx, skull, x) {
+
+
+
+  if(skull.y < 0 && skull.height === globalSkullHeight){
+    skull.y += 10;
+  }else if (skull.height === globalSkullHeight && skull.y >= 0){
+    console.log("there")
+    globalSkullHeight = skull.height + 1;
+    //setTimeout(skullGoUp = true, 2000);
+    
+  }
+
+  if (skullGoUp == true && skull.y > (window.innerHeight / 2) * -1){
+   skull.y -= 10
+   console.log(skull.y)
+  }else{
+    skullGoUp = false;
+  }
+ 
+if (complete != true) {
+
+  requestAnimationFrame(function () {
+    drawSkull(ctx, skull, x);
+  });
+
+
+  
+} else if (complete === true) {
+//skullRemove(ctx, skull, x);
+
+globalSkullHeight = skull.height;
+}
+}
+
+function skullup(ctx, skull, x){
+  if (skull.y > -200){
+    skull.y -= 10
+    requestAnimationFrame(function () {
+      skullup(ctx, skull, x);
+    });
+   }
+}
+function skullRemove(ctx, skull, x){
+
+  ctx.drawImage(skull1img, skull.x, skull.y, skull.width, skull.height);
+
+  if (skull.y > -200){
+    skull.y -= 10;
+  }
+  if (complete === true){
+    requestAnimationFrame(function () {
+      skullRemove(ctx, skull, x);
+    });
+  }
+}
