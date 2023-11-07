@@ -224,6 +224,7 @@ function checkCollision() {
     }
   }
   }
+ 
 }
 function mouseposition(event){
   mousePosX = event.clientX;
@@ -402,12 +403,12 @@ function drawMe () {
     x = Math.random() * window.innerWidth;
     t = 1;
     playBlasterSound();
-    draw(ctx, width, height, x, x);
+    draw(ctx, width, height, x, x, width);
 
     //drawSkull(ctx, skull, x);
 }
 
-function draw (ctx, width, height, x, rawx) {
+function draw (ctx, width, height, x, rawx, rawWidth) {
     //ctx.beginPath();
     
     //ctx.fillRect(0, 0, 900, 500);
@@ -471,10 +472,20 @@ function draw (ctx, width, height, x, rawx) {
         console.log("complete")
         
     }
+
+ 
  if (complete != true) {
   
     requestAnimationFrame(function () {
-      draw(ctx, width, height, x, rawx);
+      draw(ctx, width, height, x, rawx, rawWidth);
+      if (!gameOver) {
+      if (
+        mousePosX > rawx &&
+        mousePosX < rawx + rawWidth
+      ) {
+        gameOver = true;
+      }
+    }
     });
   
 
