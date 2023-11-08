@@ -280,6 +280,7 @@ console.log(points);
   
  displayGameOver();
  MainGameCanvas.stop();
+ 
  updateScore(localStorage.getItem('user'), points);
  setTimeout(() => {
   window.location.href = "../HTML/loggedinpage.html"
@@ -316,6 +317,7 @@ function updateScore(user, sc) {
     return false;
 
   } else if (DataSetMain[currentNum].username === user) {
+    if (sc > DataSetMain[currentNum].score){
     var stored = DataSetMain;
     console.log("user exists")
     console.log(sc);
@@ -328,7 +330,9 @@ function updateScore(user, sc) {
     
     
     return true;
+    }
   }
+  
 }
 
 function spawnStar(){
@@ -468,7 +472,7 @@ function draw (ctx, width, height, x, rawx, rawWidth) {
       width -= 8;
       x += 4;
       height += 2;
-      if(width <= (window.innerWidth / 15) / 2 && width >= ((window.innerWidth / 15) / 2) - 5){
+      if(width <= (window.innerWidth / 15) / 2 && width >= ((window.innerWidth / 15) / 2) - 10){
         setHorL = true;
       }
   }
