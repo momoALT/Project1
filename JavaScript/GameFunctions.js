@@ -481,7 +481,7 @@ function draw (ctx, width, height, x, rawx, rawWidth) {
       if (!gameOver) {
       if (
         mousePosX > rawx &&
-        mousePosX < rawx + rawWidth
+        mousePosX < rawx + (window.innerWidth / 15)
       ) {
         gameOver = true;
       }
