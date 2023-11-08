@@ -26,10 +26,13 @@ let goldStarImg;
 let skull1img;
 let skull2img;
 let skull3img;
+let skullLeftImg;
+let skullRightImg;
 
 
 let skull;
-
+let skullLeft;
+let skullRight;
 //Game Loader
 document.addEventListener('DOMContentLoaded', function () {
   topSwordImg = new Image();
@@ -56,12 +59,32 @@ document.addEventListener('DOMContentLoaded', function () {
 skull3img = new Image();
 skull3img.src = "../Assets/Images/skull3upd.png";
   
+skullRightImg = new Image();
+skullRightImg.src = "../Assets/Images/skullright.png";
+
+skullLeftImg = new Image();
+skullLeftImg.src = "../Assets/Images/skullLeft.png";
 skull = {
   img : skull1img,
   x : 500,
   y : (window.innerWidth / 5) * -1,
   width: window.innerWidth / 8,
   height: window.innerWidth / 5
+};
+
+skullLeft = {
+  img : skullLeftImg,
+  x : 0 + (width / 2),
+  y : window.innerHeight / 2 - (width / 2),
+  width: window.innerWidth / 2,
+  height: window.innerWidth / 2
+};
+skullRight = {
+  img : skullRightImg,
+  x : window.innerWidth - (width / 2),
+  y : window.innerHeight / 2 - (width / 2),
+  width: window.innerWidth / 2,
+  height: window.innerWidth / 2
 };
 //startGame()
 }, false);
@@ -531,6 +554,117 @@ function draw (ctx, width, height, x, rawx, rawWidth) {
     globalSkullHeight = skull.height;
     skull.img = skull1img;
   }
+}
+}
+
+
+
+
+
+function initiateMiddleBlasters () {
+  console.log("trying")
+  var canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  
+  width = window.innerWidth;
+  height = 0;
+  y = window.innerWidth / 2;
+  y;
+  t = 1;
+  if (!intro){
+  playBlasterSound();
+  drawMiddleBlasters(ctx, width, height, y, y, width);
+  }
+  //drawSkull(ctx, skull, x);
+}
+
+function drawMiddleBlasters (ctx, width, height, y, y, rawWidth) {
+  //ctx.beginPath();
+  if (!intro){
+  //ctx.fillRect(0, 0, 900, 500);
+  
+  
+  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = 'rgba(255,255,255,' + transparency + ')';
+  ctx.fillRect(0, y, width, height);
+  ctx.drawImage(skullRight.img, skullRight.x, skullRight.y, skullRight.width, skullRight.height);
+  ctx.drawImage(skullLeft.img, skullLeft.x, skullLeft.y, skullLeft.width, skullLeft.height);
+
+  if(beamTime < 100){
+  beamTime += 1;
+  //ADD ANIMATION IMG BLASTER CHANGE HERE.
+}
+  else if (height < window.innerHeight / 2 && width === window.innerWidth && transparency != 1) {
+      console.log("1")
+      height += 10;
+      transparency += 0.17;
+      y -= 5;
+      //skull.img = skull2img;
+  }
+  else if (setHorL === false && beamTime < 300) {
+    console.log("2");
+    //skull.img = skull3img;
+    beamTime += 1;
+    height -= 8;
+    y += 4;
+    width += 2;
+    if(height <= (window.innerHeight / 2) / 2 && height >= ((window.innerHeight / 2) / 2) - 10){
+      setHorL = true;
+    }
+}
+else if (setHorL === true && beamTime < 300) {
+    console.log("3")
+    
+    beamTime += 1;
+    height += 8;
+    y -= 4
+    height += 1;
+    if(height >= window.innerHeight / 2){
+    setHorL = false;
+    } 
+  } else if (beamTime >= 300 && height >= 0) {
+    
+      console.log("5")
+      height -= 5 / 4;
+      y += 2.5 / 4;
+      transparency -= 0.17 / 7;
+      skullGoUp = true;
+      //skull.img = skull3img;
+      console.log("DONEEEEEEEEEEEEEEEEEEEE")
+
+  } else {
+      complete = true;
+      console.log("complete")
+      
+  }
+
+
+if (complete != true) {
+
+  requestAnimationFrame(function () {
+    drawMiddleBlasters(ctx, width, height, y, rawx, rawWidth);
+    if (!gameOver && skull.img === skull3img) {
+    if (
+      mousePosY > rawy &&
+      mousePosY < rawy + (window.innerHeight / 2)
+    ) {
+      gameOver = true;
+    }
+  }
+  });
+
+
+  
+} else if (complete === true) {
+  complete = false;
+  transparency = 0;
+  width = 0;
+  height = 500;
+  beamTime = 0;
+  skull.y = skull.height * -1
+  globalSkullHeight = skull.height;
+  skull.img = skull1img;
+}
 }
 }
 
