@@ -73,6 +73,9 @@ skull = {
 
 var audio = new Audio('../Assets/Sounds/thevoicestart2.mp3');
 
+var flick1 = new Audio('../Assets/Sounds/flick1.mp3');
+var flick2 = new Audio('../Assets/Sounds/flick2.mp3');
+
 
 let wallArray = [];
 let starArray = [];
@@ -116,6 +119,11 @@ var MainGameCanvas = {
     setInterval(placeWall, 1000);
     setInterval(spawnStar, 1000);
     setInterval(drawMe, 8000);
+    setTimeout(function() {
+     intro = false;
+     playFlick1();
+     playFlick2();
+    }, 15000);
     this.context.fillStyle = "red";
     //this.context.fillRect(walltopX, walltopY, walltopWidth, walltopHeight);
     //this.context.fillRect(wallbottomX, wallbottomY, wallbottomWidth, wallbottomHeight);
@@ -164,6 +172,12 @@ function component(width, height, color, x, y, type) { //Function to add assets
 
 $("<audio id='blaster'>").appendTo("body"); //Binds audio to body of document
 $("#blaster").attr("src", "../Assets/Sounds/blastsound.mp3"); //Audio Attributes with reference
+
+$("<audio id='flick1'>").appendTo("body"); //Binds audio to body of document
+$("#flick1").attr("src", "../Assets/Sounds/flick1.mp3"); //Audio Attributes with reference
+
+$("<audio id='flick2'>").appendTo("body"); //Binds audio to body of document
+$("#flick2").attr("src", "../Assets/Sounds/flick2.mp3"); //Audio Attributes with reference
 
 $("<audio id='audioElement'>").appendTo("body"); //Binds audio to body of document
 $("#audioElement").attr("src", "../Assets/Sounds/thevoicestart2.mp3").attr("autoplay", "autoplay"); //Audio Attributes with reference
@@ -235,14 +249,20 @@ MainGameCanvas.canvas.addEventListener("mousemove", mouseposition);
 function displayGameOver() {
   MainGameCanvas.clear();
   context.font = "30px BruceRegular";
+  context.shadowColor="red";
+  context.shadowBlur=15;
   context.fillStyle = "red";
   context.fillText("Death has reached you.", (MainGameCanvas.canvas.width / 2) - 320, MainGameCanvas.canvas.height / 2);
+  context.shadowBlur=0;
 }
 
 function scoreDisplay() {
   context.font = "30px BruceRegular";
+  context.shadowColor="white";
+  context.shadowBlur=15;
   context.fillStyle = "white";
   context.fillText("Score: " + points, MainGameCanvas.canvas.width / 12 - 80, MainGameCanvas.canvas.height / 12);
+  context.shadowBlur = 0;
 }
 
 //Function to Canvas and element positions
@@ -265,6 +285,7 @@ console.log(points);
   window.location.href = "../HTML/loggedinpage.html"
  }, 3000);
  }else{
+  if(intro){
  for (let i = 0; i < wallArray.length; i++){
   let wall = wallArray[i];
   wall.x += velocityX;
@@ -278,6 +299,7 @@ console.log(points);
   context.drawImage(star.img, star.x, star.y, star.width, star.height);
  }
  }
+}
 }
 
 function updateScore(user, sc) {
@@ -348,6 +370,7 @@ function despawnStar(){
 }
 
 function placeWall(){
+  if (intro){
   let openingSpace = window.innerHeight/4;
   let randomY = Math.random()* window.innerHeight;
   let wallTop = {
@@ -368,6 +391,9 @@ function placeWall(){
   wallArray.push(wallTop);
   wallArray.push(wallBottom);
   points += 50;
+}else{
+  wallArray.splice(0, wallArray.length)
+}
 }
 
 
@@ -387,7 +413,7 @@ function spawnLazer(){
 function despawnLazer(){};
 
 
-
+var intro = true;
 var ctx;
 var setHorL = false;
 var beamTime = 0;
@@ -402,15 +428,16 @@ function drawMe () {
     height = window.innerHeight;
     x = Math.random() * window.innerWidth;
     t = 1;
+    if (intro){
     playBlasterSound();
     draw(ctx, width, height, x, x, width);
-
+    }
     //drawSkull(ctx, skull, x);
 }
 
 function draw (ctx, width, height, x, rawx, rawWidth) {
     //ctx.beginPath();
-    
+    if (intro){
     //ctx.fillRect(0, 0, 900, 500);
     skull.x = rawx - (skull.width / 2);
     
@@ -478,7 +505,7 @@ function draw (ctx, width, height, x, rawx, rawWidth) {
   
     requestAnimationFrame(function () {
       draw(ctx, width, height, x, rawx, rawWidth);
-      if (!gameOver) {
+      if (!gameOver && skull.img === skull3img) {
       if (
         mousePosX > rawx &&
         mousePosX < rawx + (window.innerWidth / 15)
@@ -498,7 +525,9 @@ function draw (ctx, width, height, x, rawx, rawWidth) {
     beamTime = 0;
     skull.y = skull.height * -1
     globalSkullHeight = skull.height;
+    skull.img = skull1img;
   }
+}
 }
 
 var skullGoUp = false;
@@ -506,6 +535,16 @@ var skulltime = 0;
 function playBlasterSound() {
   var audio = document.getElementById("blaster");
   audio.play();
+}
+function playFlick1() {
+  var audio = document.getElementById("flick1");
+  audio.play();
+}
+function playFlick2() {
+  var audio = document.getElementById("flick2");
+  setTimeout(function() {
+    audio.play();
+   }, 500);
 }
 
 let globalSkullHeight = skull.height;
